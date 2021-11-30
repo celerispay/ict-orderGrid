@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Boostsales_IctOrderGrid::sales_order_by_invoice"
+             title="Open bestellingen"
+             translate="title"
+             module="Boostsales_IctOrderGrid"
+             sortOrder="10"
+             parent="Magento_Sales::sales_operation"
+             action="boostsales_ictordergrid/orders"
+             resource="Boostsales_IctOrderGrid::orders_resource"/>
+    </menu>
+</config>
