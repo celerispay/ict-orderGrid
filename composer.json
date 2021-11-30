@@ -2,7 +2,7 @@
     "name": "boostsales/ict-order-grid",
     "description": "Magento 2 module",
     "require": {
-        "php": "~7.2",
+        "php": "~7.2"
     },
     "type": "magento2-module",
     "license": "MIT",
