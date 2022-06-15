@@ -11,6 +11,7 @@ use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Service\InvoiceService;
 use Magento\Framework\DB\Transaction;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Sales\Model\Order\Email\Sender\InvoiceSender;
 use Transliterator;
 
 class MassApprove extends \Magento\Backend\App\Action
@@ -24,11 +25,13 @@ class MassApprove extends \Magento\Backend\App\Action
         \Magento\Backend\App\Action\Context $context,
         Order $orderData,
         InvoiceService $invoiceService,
-        Transaction $transaction
+        Transaction $transaction,
+	InvoiceSender $invoiceSender
     ) {
         $this->orderData = $orderData;
         $this->invoiceService = $invoiceService;
         $this->transaction = $transaction;
+        $this->invoiceSender = $invoiceSender;
         parent::__construct($context);
     }
 
@@ -52,6 +55,7 @@ class MassApprove extends \Magento\Backend\App\Action
                         ->addObject($invoice->getOrder())
                         ->save();
                     $order->save();
+		    $this->invoiceSender->send($invoice);
                     $countInvoiceOrder++;
                 } else {
                     $countNonInvoiceOrder++;

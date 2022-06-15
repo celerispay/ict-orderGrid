@@ -40,7 +40,8 @@ class Collection extends OriginalCollection
      */
     public function _renderFiltersBefore()
     {
-        $this->getSelect()->orwhere('store_id = ? or store_id = ?', 9,10);
+        $this->getSelect()->where('store_id = \'9\' or store_id = \'10\'');
+//	var_dump(get_class_methods($test));
         parent::_renderFiltersBefore();
     }
 
